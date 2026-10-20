@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#081226">
+    <title>Rejin &amp; Amrutha — Wedding Invitation</title>
+    <meta name="description" content="Together with their families, Rejin Joy &amp; Amrutha Paul joyfully invite you to celebrate their wedding on Thursday, 26 November 2026 at St. Antony's Church and River Front Resort, Kodanad.">
+    <meta property="og:title" content="Rejin &amp; Amrutha are getting married!">
+    <meta property="og:description" content="Thursday, 26 November 2026 · Holy Sacrament at St. Antony's Church, Kodanad · Reception at River Front Resort, Kodanad">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/rings_blue.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Luxury Wedding Typography (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" as="image" href="assets/images/rings_blue.jpg">
+    <link rel="preload" as="image" href="assets/images/couple.jpg">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <!-- Configuration: Client Wedding Details -->
+    <script>
+      window.INVITATION = {
+        couple: "Rejin & Amrutha",
+        bride: "Amrutha Paul",
+        groom: "Rejin Joy",
+        dateDisplay: "26 November 2026",
+        dateDay: "Thursday, November 26",
+        weddingDateISO: "2026-11-26T15:30:00+05:30",
+        time: "3.30 PM",
+        ceremonyVenue: "St. Antony's Church, Kodanad",
+        ceremonyTime: "3.30 PM",
+        receptionVenue: "River Front Resort, Kodanad",
+        receptionTime: "6.30 PM",
+        churchLocationLink: "https://maps.google.com/?q=St.+Antony's+Church+Kodanad",
+        receptionLocationLink: "https://maps.google.com/?q=River+Front+Resort+Kodanad",
+        coverImage: "assets/images/rings_blue.jpg",
+        openingPhoto: "assets/images/couple.jpg",
+        mainPhoto: "assets/images/couple.jpg",
+        secondPhoto: "assets/images/couple.jpg",
+        music: "assets/wedding-music.mpeg",
+        familyMembers: "Joy P K, Rosily Joy, Jerin Joy, Riya Jerin, Paulachan N.D, Selin Paul & Athulya Paul",
+        message: "As we begin our new life together, we request the honour of your presence and blessings to celebrate our holy sacrament and wedding."
+      };
+    </script>
+
+    <audio id="music" preload="metadata" loop playsinline></audio>
+
+    <main class="invite-shell" id="top">
+
+      <!-- 1. Opening Cover Screen (Tap to Open) -->
+      <section class="cover" id="cover" aria-label="Opening invitation cover">
+        <img class="cover__image" data-config-src="coverImage" alt="Diamond wedding rings on royal blue satin">
+        <div class="cover__veil"></div>
+        <div class="shine" aria-hidden="true"></div>
+        <div class="cover__content">
+          <div class="monogram-crest" aria-hidden="true">
+            <span class="crest-letter">R</span>
+            <span class="crest-sparkle">✦</span>
+            <span class="crest-letter">A</span>
+          </div>
+          <p class="eyebrow">The Wedding Celebration of</p>
+          <h1 class="cover__title" data-config-text="couple">Rejin &amp; Amrutha</h1>
+          <div class="ornament-divider light">
+            <span class="line"></span>
+            <span class="diamond">❖</span>
+            <span class="line"></span>
+          </div>
+          <p class="cover__date">
+            Thursday · <span data-config-text="dateDisplay">26 November 2026</span>
+          </p>
+          <button class="open-button" id="openInvite" type="button" aria-label="Open invitation">
+            <span class="btn-sparkle">✦</span>
+            <span>Open Invitation</span>
+            <span class="btn-sparkle">✦</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. Hero Section (Together with their families) -->
+      <section class="hero section" id="invitation">
+        <div class="blue-dust" aria-hidden="true"></div>
+        <p class="guest-name reveal" id="guestName" style="display: none;"></p>
+
+        <div class="monogram-badge reveal" aria-hidden="true">
+          <span>R</span>
+          <span class="crest-dot">✦</span>
+          <span>A</span>
+        </div>
+
+        <p class="eyebrow reveal">Together with their families</p>
+        <h2 class="couple-name reveal" data-config-text="couple">Rejin &amp; Amrutha</h2>
+        <p class="hero-sub reveal">Joyfully invite you to celebrate our wedding</p>
+
+        <div class="message-card reveal">
+          <div class="ornament-divider">
+            <span class="line"></span>
+            <span class="diamond">✧</span>
+            <span class="line"></span>
+          </div>
+          <p class="message" data-config-text="message"></p>
+          <div class="ornament-divider">
+            <span class="line"></span>
+            <span class="diamond">✧</span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="scroll-cue" aria-hidden="true">
+          <span></span>
+          <small>Scroll to explore</small>
+        </div>
+      </section>
+
+      <!-- 3. Scratch Card Reveal Section -->
+      <section class="section reveal-section" aria-label="Scratch to reveal wedding date">
+        <p class="eyebrow reveal">Save The Date</p>
+        <h2 class="section-title reveal">Scratch to reveal the day</h2>
+        <p class="section-hint reveal">Rub gently with your finger to unveil our special day</p>
+        
+        <div class="scratch-card-wrapper reveal">
+          <div class="scratch-card" id="scratchCard">
+            <div class="date-reveal">
+              <span class="date-day">Thursday</span>
+              <span class="date-number">26</span>
+              <span class="date-month">November 2026</span>
+              <div class="date-divider"></div>
+              <span class="date-time">Holy Sacrament · 3.30 PM</span>
+            </div>
+            <canvas id="scratchCanvas" aria-label="Scratch area"></canvas>
+            <div class="scratch-hint" id="scratchHint">✨ Rub Here ✨</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Countdown Timer Section -->
+      <section class="section countdown-section">
+        <div class="countdown-stars" aria-hidden="true"></div>
+        <p class="eyebrow reveal">Counting The Moments</p>
+        <h2 class="section-title reveal">Until We Say Yes</h2>
+        <div class="countdown reveal" id="countdown">
+          <div class="countdown-box">
+            <strong data-unit="days">00</strong>
+            <span>Days</span>
+          </div>
+          <div class="countdown-box">
+            <strong data-unit="hours">00</strong>
+            <span>Hours</span>
+          </div>
+          <div class="countdown-box">
+            <strong data-unit="minutes">00</strong>
+            <span>Minutes</span>
+          </div>
+          <div class="countdown-box">
+            <strong data-unit="seconds">00</strong>
+            <span>Seconds</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Portrait / Photo Section (Our Beginning) -->
+      <section class="photo-section" aria-label="Couple photo">
+        <img data-config-src="mainPhoto" alt="Rejin and Amrutha portrait" loading="lazy">
+        <div class="photo-caption reveal">
+          <div class="photo-badge">Our Beginning</div>
+          <h2 data-config-text="couple">Rejin &amp; Amrutha</h2>
+          <p class="photo-sub">A sacred journey of love, faith and lifelong togetherness</p>
+        </div>
+      </section>
+
+      <!-- 6. Venue & Events Section -->
+      <section class="section venue-section">
+        <p class="eyebrow reveal">The Celebrations</p>
+        <h2 class="section-title reveal">Wedding Events</h2>
+        <p class="venue-date-badge reveal">Thursday, 26 November 2026</p>
+
+        <!-- Ceremony Card -->
+        <div class="event-card reveal">
+          <div class="event-badge-tag">Holy Sacrament</div>
+          <div class="event-card-body">
+            <div class="event-icon-wrap">
+              <span class="event-icon">⛪</span>
+            </div>
+            <div class="event-details">
+              <p class="event-label">Church Ceremony · 3:30 PM</p>
+              <h3 class="event-venue">St. Antony's Church</h3>
+              <p class="event-location">Kodanad, Kerala</p>
+            </div>
+          </div>
+          <div class="event-actions">
+            <a class="event-btn map-btn" id="mapButton" href="https://maps.google.com/?q=St.+Antony's+Church+Kodanad" target="_blank" rel="noopener">
+              <span class="btn-icon">📍</span> Map Directions
+            </a>
+            <a class="event-btn cal-btn" id="churchCalButton" href="#" target="_blank" rel="noopener">
+              <span class="btn-icon">📅</span> Add to Calendar
+            </a>
+          </div>
+        </div>
+
+        <!-- Reception Card -->
+        <div class="event-card reveal">
+          <div class="event-badge-tag">Celebration</div>
+          <div class="event-card-body">
+            <div class="event-icon-wrap">
+              <span class="event-icon">🥂</span>
+            </div>
+            <div class="event-details">
+              <p class="event-label">Reception to follow · 6:30 PM</p>
+              <h3 class="event-venue">River Front Resort</h3>
+              <p class="event-location">Kodanad, Kerala</p>
+            </div>
+          </div>
+          <div class="event-actions">
+            <a class="event-btn map-btn" id="receptionMapButton" href="https://maps.google.com/?q=River+Front+Resort+Kodanad" target="_blank" rel="noopener">
+              <span class="btn-icon">📍</span> Map Directions
+            </a>
+            <a class="event-btn cal-btn" id="receptionCalButton" href="#" target="_blank" rel="noopener">
+              <span class="btn-icon">📅</span> Add to Calendar
+            </a>
+          </div>
+        </div>
+
+        <div class="actions reveal" style="margin-top: 36px;">
+          <button class="action-button primary-share" id="shareButton" type="button">
+            <span class="share-icon">💌</span>
+            <span>Share Invitation</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 7. Family Section -->
+      <section class="section family-section">
+        <p class="eyebrow reveal">Sharing in our joy</p>
+        <h2 class="section-title reveal">With Our Beloved Family</h2>
+        <div class="ornament-divider reveal" style="margin-bottom: 28px;">
+          <span class="line"></span>
+          <span class="diamond">❖</span>
+          <span class="line"></span>
+        </div>
+
+        <div class="family-cards-grid">
+          <div class="family-card reveal">
+            <span class="family-tag">Groom's Parents</span>
+            <p class="family-name">Joy P K &amp; Rosily Joy</p>
+          </div>
+
+          <div class="family-card reveal">
+            <span class="family-tag">Brother &amp; Sister-in-law</span>
+            <p class="family-name">Jerin Joy &amp; Riya Jerin</p>
+          </div>
+
+          <div class="family-card reveal">
+            <span class="family-tag">Bride's Family</span>
+            <p class="family-name">Paulachan N.D, Selin Paul &amp; Athulya Paul</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Footer / Closing Section -->
+      <section class="section share-review">
+        <img data-config-src="secondPhoto" alt="Rejin and Amrutha together" loading="lazy">
+        <div class="share-copy reveal">
+          <div class="closing-monogram">R ✦ A</div>
+          <h2>Rejin &amp; Amrutha</h2>
+          <div class="closing-badge">Are Getting Married</div>
+          <div class="ornament-divider light" style="margin: 16px auto;">
+            <span class="line"></span>
+            <span class="diamond">✧</span>
+            <span class="line"></span>
+          </div>
+          <p class="closing-date">Thursday, 26 November 2026</p>
+          <p class="closing-venue">St. Antony's Church, Kodanad · 3:30 PM</p>
+          <p class="closing-venue">River Front Resort, Kodanad · 6:30 PM</p>
+          <p class="closing-warmth">We look forward to celebrating with you!</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Floating Music Toggle & Falling Petals Layer -->
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Toggle background music">
+      <span class="music-disc" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+      </span>
+      <span class="music-label">Music</span>
+    </button>
+    <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
