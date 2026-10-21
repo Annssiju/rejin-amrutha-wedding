@@ -26,6 +26,7 @@
   --muted: #5e7699;
   --silver-border: rgba(191, 219, 254, 0.55);
   --gold-accent: #c5a880;
+  --opening-image: url('assets/images/couple.jpg');
 
   --shadow-subtle: 0 8px 24px rgba(11, 23, 45, 0.06);
   --shadow-card: 0 16px 44px -8px rgba(11, 23, 45, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.85);
@@ -316,8 +317,8 @@ button, a {
 .hero {
   color: var(--ink);
   background:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.95) 0%, rgba(240, 247, 255, 0.98) 100%),
-    var(--opening-image) center/cover;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(240, 247, 255, 0.42) 40%, rgba(240, 247, 255, 0.72) 100%),
+    var(--opening-image) center top / cover no-repeat;
 }
 
 .blue-dust {
@@ -619,18 +620,21 @@ button, a {
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  z-index: 1;
 }
 
 .photo-section::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 18, 38, 0.2) 0%, transparent 40%, rgba(8, 18, 38, 0.88) 100%);
+  z-index: 2;
+  background: linear-gradient(180deg, transparent 40%, rgba(8, 18, 38, 0.8) 100%);
+  pointer-events: none;
 }
 
 .photo-caption {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 0 24px calc(60px + env(safe-area-inset-bottom));
   text-align: center;
 }
@@ -932,13 +936,15 @@ button, a {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
-    linear-gradient(180deg, rgba(8, 18, 38, 0.3) 0%, rgba(8, 18, 38, 0.75) 55%, rgba(5, 12, 24, 0.96) 100%);
+    linear-gradient(180deg, transparent 20%, rgba(8, 18, 38, 0.45) 50%, rgba(5, 12, 24, 0.92) 100%);
+  pointer-events: none;
 }
 
 .share-copy {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 0 24px calc(55px + env(safe-area-inset-bottom));
   text-align: center;
 }

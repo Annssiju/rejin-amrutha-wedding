@@ -8,7 +8,8 @@
       node.innerHTML = config[node.dataset.configText] || '';
     });
     $$('[data-config-src]').forEach((node) => {
-      node.src = config[node.dataset.configSrc] || '';
+      const srcVal = config[node.dataset.configSrc];
+      if (srcVal) node.src = srcVal;
     });
     if (config.music) {
       $('#music').src = config.music;
