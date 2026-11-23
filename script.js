@@ -25,6 +25,18 @@
     if (config.openingPhoto) {
       document.documentElement.style.setProperty('--opening-image', 'url("' + config.openingPhoto + '")');
     }
+    if (config.coverImagePosition) {
+      document.documentElement.style.setProperty('--cover-pos', config.coverImagePosition);
+    }
+    if (config.heroPhotoPosition) {
+      document.documentElement.style.setProperty('--hero-pos', config.heroPhotoPosition);
+    }
+    if (config.mainPhotoPosition) {
+      document.documentElement.style.setProperty('--portrait-pos', config.mainPhotoPosition);
+    }
+    if (config.secondPhotoPosition) {
+      document.documentElement.style.setProperty('--closing-pos', config.secondPhotoPosition);
+    }
 
     // Check for personalized invitee name via URL (e.g. ?to=John+and+Family)
     const urlParams = new URLSearchParams(window.location.search);
@@ -41,7 +53,7 @@
   function setupCalendarButtons() {
     const churchCalBtn = $('#churchCalButton');
     if (churchCalBtn) {
-      const start = '20261126T100000Z'; // 3:30 PM IST (UTC+5:30) is 10:00 AM UTC
+      const start = '20261126T093000Z'; // 3:00 PM IST (UTC+5:30) is 10:00 AM UTC
       const end = '20261126T123000Z';
       const title = encodeURIComponent("Rejin & Amrutha — Holy Sacrament & Wedding Ceremony");
       const details = encodeURIComponent("Holy Sacrament & Wedding Ceremony of Rejin Joy & Amrutha Paul at St. Antony's Church, Kodanad.");
@@ -125,7 +137,7 @@
       seconds: $('[data-unit="seconds"]')
     };
 
-    const target = new Date('2026-11-26T15:30:00+05:30').getTime();
+    const target = new Date('2026-11-26T15:00:00+05:30').getTime();
 
     function tick() {
       const now = Date.now();
@@ -265,12 +277,132 @@
     }
   }
 
+
+  function setup3DCarousel() {
+    const stage = $('#carousel3DStage');
+    if (!stage) return;
+    const cards = $$('.carousel-3d-card', stage);
+    const dots = $$('#carouselDots .carousel-dot');
+    const prevBtn = $('#carouselPrev');
+    const nextBtn = $('#carouselNext');
+    const total = cards.length;
+    if (total === 0) return;
+    let currentIndex = 0;
+    let autoTimer = null;
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+
+    function update() {
+      cards.forEach((card, idx) => {
+        let diff = (idx - currentIndex + total) % total;
+        if (diff > total / 2) diff -= total;
+
+        if (diff === 0) {
+          card.setAttribute('data-state', 'active');
+        } else if (diff === -1 || (diff === total - 1 && total === 2)) {
+          card.setAttribute('data-state', 'prev');
+        } else if (diff === 1) {
+          card.setAttribute('data-state', 'next');
+        } else if (diff < 0) {
+          card.setAttribute('data-state', 'hidden-left');
+        } else {
+          card.setAttribute('data-state', 'hidden-right');
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+    }
+
+    function goTo(index) {
+      currentIndex = (index + total) % total;
+      update();
+      resetAuto();
+    }
+
+    function next() {
+      goTo(currentIndex + 1);
+    }
+
+    function prev() {
+      goTo(currentIndex - 1);
+    }
+
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(next, 3800);
+    }
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function resetAuto() {
+      stopAuto();
+      startAuto();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', (e) => { e.stopPropagation(); goTo(idx); });
+    });
+
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        if (idx !== currentIndex) {
+          goTo(idx);
+        }
+      });
+    });
+
+    const wrapper = $('#carousel3DWrapper');
+    if (wrapper) {
+      wrapper.addEventListener('touchstart', (e) => {
+        stopAuto();
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        isDragging = true;
+      }, { passive: true });
+
+      wrapper.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+      }, { passive: true });
+
+      wrapper.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        const diffX = currentX - startX;
+        if (diffX < -35) {
+          next();
+        } else if (diffX > 35) {
+          prev();
+        } else {
+          startAuto();
+        }
+      });
+
+      wrapper.addEventListener('mouseenter', stopAuto);
+      wrapper.addEventListener('mouseleave', startAuto);
+    }
+
+    update();
+    startAuto();
+  }
+
   async function shareInvite() {
     const shareData = {
       title: `${config.couple} — Wedding Invitation`,
       text: `${config.couple} joyfully invite you to celebrate their wedding!\n\n` +
             `📅 Thursday, 26 November 2026\n` +
-            `⛪ Ceremony: St. Antony's Church, Kodanad · 3:30 PM\n` +
+            `⛪ Ceremony: St. Antony's Church, Kodanad · 3:00 PM\n` +
             `🥂 Reception: River Front Resort, Kodanad · 6:30 PM`,
       url: window.location.href
     };
@@ -294,6 +426,7 @@
   setupRevealAnimation();
   setupCountdown();
   setupScratchCard();
+  setup3DCarousel();
 
   $('#openInvite').addEventListener('click', openInvite);
   $('#cover').addEventListener('click', (event) => {
